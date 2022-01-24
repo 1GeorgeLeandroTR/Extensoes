@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	
+	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/main.css">
 	<script type="text/javascript" src="../js/jquery.js"></script>
 	<script type="text/javascript" src="../js/popup.js"></script>
@@ -10,10 +10,11 @@
 	<title>popup</title>
 </head>
 <body id="meu">
-	<div class="teste">
-		<h2 id="greet"> </h2>
-		<input type="text" id="name"> 
-		<button id="cor"> Clique em mim</button>
+	<div class="container">
+		
+		<h2 id="titulo">Salve a imagem aqui </h2>
+		<div id="box-image" ondragover="dragover_handler();"> </div>
+		<button class="btn btn btn-outline-primary my-btn" id="cor"> Salvar</button>
 	</div>
 </body>
 </html>

@@ -1,0 +1,31 @@
+body{
+	padding: 3%;
+	min-width:15.625rem;
+	min-height:16.875rem;
+
+}
+
+.container{
+
+}
+
+#titulo{
+	font-size: 16pt;
+}
+
+#box-image{
+	min-width:9.375rem;
+	min-height: 10.625rem;
+	background-color: #F0F2FA;
+	border-radius: 20px;
+
+}
+
+.my-btn{
+	border-radius: 7px;
+	margin-top: 10%;
+	width: 100%;
+}
+.my-btn:hover{
+	transition: 0.75s;
+}

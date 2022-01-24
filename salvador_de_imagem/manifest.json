@@ -2,11 +2,11 @@
 	"manifest_version": 2,
 	"version": "0.0.1",
 	"icons": { 
-		"16": "icons/16.png",
-        "48": "icons/48.png",
-        "128": "icons/128.png" },
-	"name": "Minha primeira extensão",
-	"author": "George Santos Leandro",
+		"16": "icon.png",
+        "48": "icon.png",
+        "128": "icon.png" },
+	"name": "Image saver",
+	"author": "George Leandro",
 	"content_scripts":[{
 		"matches":["<all_urls>"],
 		"js":["js/content.js"]
@@ -16,7 +16,7 @@
 		"persistent": false
 	},
 	"browser_action":{
-		"default_title": "Primeira extensao",
+		"default_title": "Image Saver",
 		"default_popup": "templates/popup.html",
 		"default_icon": "icon.png"
 	}
