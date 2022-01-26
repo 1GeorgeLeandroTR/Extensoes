@@ -1,7 +1,6 @@
-var script = document.createElement('script');
-script.src = 'https://code.jquery.com/jquery-3.4.1.min.js';
-script.type = 'text/javascript';
-document.getElementsByTagName('head')[0].appendChild(script);
+//Só funciona na aba em que foi envocada 
+    //Possivel solução é injetar variavel 
+    //talvez deixar tudo dentro da mesma função (){tudo}()\
 
 var visibilidade = false;
 
@@ -19,24 +18,20 @@ function colocar(){
     iframe.frameBorder = "solid";
     /* end of settings */
     iframe.src = chrome.runtime.getURL("../templates/popup.html");
+    //iframe.body.addEventListener('mouseup', Handler);
     document.body.appendChild(iframe);
     //window.addEventListener("click",()=>{apaga()},false )
 };
 
-
-// detecta o clique em uma janela normal mas nao como extensao
 function apaga(){
-      alert("clicou");
+      var iframe = document.getElementById("meu-frame");
+      iframe.style.visibility = "hidden";
 
 };
 
-function toggle_iframe() {
-  if (iframe.style.width == "0px"){
-    iframe.style.width="250px";
- 
-  } else {
-    iframe.style.width="0px";
-  }
+function mostra(){
+  var iframe = document.getElementById("meu-frame");
+  iframe.style.visibility = "visible";
 }
 
 chrome.runtime.onMessage.addListener(
@@ -44,16 +39,14 @@ chrome.runtime.onMessage.addListener(
         if (response.action == "mostra"){
           if(visibilidade == false){
             colocar();
-            toggle_iframe();//Nem usa
           }
           else{
-            chrome.runtime.sendMessage({action:"revelar"})
+            mostra();
           }
-          
         }
         if(response.action == "esconde"){
             visibilidade = true;
+            apaga();
         }
-
     }
 );
