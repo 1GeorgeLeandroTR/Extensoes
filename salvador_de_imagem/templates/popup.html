@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html id="meu">
 <head>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/main.css">
-	<script type="text/javascript" src="../js/jquery.js"></script>
-	<script type="text/javascript" src="../js/popup.js"></script>
+	<script type="text/javascript" src="../js/popup_conf/jquery.js"></script>
+	<script type="text/javascript" src="../js/background_conf/background_front.js"></script>
+
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>popup</title>
 </head>
-<body id="meu">
-	<div class="container">
-		
+<body >
+	<div class="container">				
 		<h2 id="titulo">Salve a imagem aqui </h2>
 		<div id="box-image" ondragover="dragover_handler();"> </div>
 		<button class="btn btn btn-outline-primary my-btn" id="cor"> Salvar</button>
+		<button class="btn btn-danger my-btn" id="sair"> Sair</button>
 	</div>
 </body>
 </html>

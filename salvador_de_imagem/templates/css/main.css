@@ -4,7 +4,12 @@ body{
 	min-height:16.875rem;
 
 }
-
+#meu{
+	transition: visibility 0.030s;
+}
+#sair{
+	transition: visibility 0.029s;
+}
 .container{
 
 }
@@ -18,13 +23,20 @@ body{
 	min-height: 10.625rem;
 	background-color: #F0F2FA;
 	border-radius: 20px;
+}
 
+ iframe {
+  height: 300px;
+  width: 300px;
+  resize: both;
+  overflow: auto;
 }
 
 .my-btn{
+	display: inline;
 	border-radius: 7px;
 	margin-top: 10%;
-	width: 100%;
+	width: 48%;
 }
 .my-btn:hover{
 	transition: 0.75s;

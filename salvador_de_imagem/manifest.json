@@ -7,17 +7,15 @@
         "128": "icon.png" },
 	"name": "Image saver",
 	"author": "George Leandro",
+	"web_accessible_resources": ["templates/popup.html"],
 	"content_scripts":[{
-		"matches":["<all_urls>"],
-		"js":["js/content.js"]
+		"run_at": "document_end",
+    	"matches": ["*://*/*"],
+		"js":["js/content_conf/content.js"]
 	}],
 	"background":{
-		"scripts":["js/background.js"],
+		"scripts":["js/background_conf/background_front.js","js/background_conf/background_back.js"],
 		"persistent": false
 	},
-	"browser_action":{
-		"default_title": "Image Saver",
-		"default_popup": "templates/popup.html",
-		"default_icon": "icon.png"
-	}
+	"browser_action":{}
 }
