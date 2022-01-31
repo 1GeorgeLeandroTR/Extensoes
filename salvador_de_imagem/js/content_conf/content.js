@@ -11,26 +11,24 @@ function colocar(){
     iframe.style.height = "17.5rem";
     iframe.style.position = "fixed";
     iframe.style.top = "0px";
-    iframe.frameBorder= 1;
+
     iframe.id = "meu-frame";
     iframe.style.right = "0px";
     iframe.style.zIndex = "1000000000000000";
-    iframe.frameBorder = "solid";
     /* end of settings */
     iframe.src = chrome.runtime.getURL("../templates/popup.html");
-    //iframe.body.addEventListener('mouseup', Handler);
     document.body.appendChild(iframe);
-    //window.addEventListener("click",()=>{apaga()},false )
 };
 
 function apaga(){
       var iframe = document.getElementById("meu-frame");
       iframe.style.visibility = "hidden";
+      iframe.parentNode.removeChild(iframe);
 
 };
 
 function mostra(){
-  var iframe = document.getElementById("meu-frame");
+  var iframe = document.createElement("iframe");
   iframe.style.visibility = "visible";
 }
 
@@ -41,7 +39,7 @@ chrome.runtime.onMessage.addListener(
             colocar();
           }
           else{
-            mostra();
+            colocar();
           }
         }
         if(response.action == "esconde"){
