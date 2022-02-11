@@ -1,27 +1,46 @@
 {
-	"manifest_version": 2,
-	"version": "0.0.1",
-	"icons": { 
-		"16": "icons/16.png",
-        "48": "icons/48.png",
-        "128": "icons/128.png" },
-	"name": "Image saver",
-	"author": "George Leandro",
-	"permissions":[
-		"contextMenus"
-	],
-	"web_accessible_resources": ["templates/popup.html"],
-	"content_scripts":[{
-		"run_at": "document_end",
-    	"matches": ["*://*/*"],
-		"js":["js/content_conf/content.js"]
-	}],
-	"background":{
-		"scripts":[
-			"js/background_conf/background_front.js",
-			"js/background_conf/background_back.js",
-			"js/popup_conf/test.js"]
-	},
-	
-	"browser_action":{}
+   "manifest_version":2,
+   "version":"0.0.1",
+   "icons":{
+      "16":"icons/16.png",
+      "48":"icons/48.png",
+      "128":"icons/128.png"
+   },
+   "name":"Image saver",
+   "author":"George Leandro",
+   "permissions":[
+      "contextMenus",
+      "https://www.googleapis.com/*",
+      "https://drive.google.com/*",
+      "identity"
+   ],
+   "web_accessible_resources":[
+      "templates/popup.html"
+   ],
+   "content_scripts":[
+      {
+         "run_at":"document_end",
+         "matches":[
+            "*://*/*"
+         ],
+         "js":[
+            "js/content_conf/content.js"
+         ]
+      }
+   ],
+   "oauth2":{
+      "client_id":"267660766780-bjg22pjtlln6doft4r5uqnd4bmu6jpgr.apps.googleusercontent.com",
+      "scopes":[
+         "https://www.googleapis.com/auth/drive"
+      ]
+   },
+   "background":{
+      "scripts":[
+         "js/background_conf/background_front.js",
+         "js/background_conf/background_back.js"
+      ]
+   },
+   "browser_action":{
+      
+   }
 }
