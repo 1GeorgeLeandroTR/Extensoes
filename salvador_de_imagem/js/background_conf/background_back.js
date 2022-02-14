@@ -1,7 +1,27 @@
 //Chamo a api de integração com o google drive aqui
 //Clique com botão direito
+
+var scripto = document.createElement('script');
+scripto.type = "text/javascript";
+scripto.async = true;
+scripto.defer = true;
+scripto.src = "https://apis.google.com/js/platform.js?onload=init";
+
+
+document.getElementsByTagName('head')[0].appendChild(scripto);
+eval(scripto);
+
+onload="this.onload=function(){};handleClientLoad()"
+onreadystatechange="if (this.readyState === 'complete') this.onload()"
+//-------------------
 chrome.identity.getAuthToken({ interactive: true }, function (token) {
   try {
+    debugger;
+    onload="this.onload=function(){};handleClientLoad()"
+    onreadystatechange="if (this.readyState === 'complete') this.onload()"
+    init();
+
+    alert(token);
     chrome.identity.getProfileUserInfo((userinfo) => {
       //debugger;
       //alert("userinfo", userinfo.email);
@@ -14,9 +34,12 @@ chrome.identity.getAuthToken({ interactive: true }, function (token) {
   }
 });
 
-chrome.identity.getAuthToken({ interactive: true }, function (token) {
-  // Use the token.
-});
+function init() {
+  gapi.load('auth2', function() {
+    /* Ready. Make a call to gapi.auth2.init or some other API */
+    gapi.auth2.init("267660766780-bjg22pjtlln6doft4r5uqnd4bmu6jpgr.apps.googleusercontent.com");
+  });
+}
 
 //Fazendo requisição na api baseado no curl
 function requestCurl(token) {
