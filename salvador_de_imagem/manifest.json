@@ -17,7 +17,7 @@
    "web_accessible_resources":[
       "templates/popup.html"
    ],
-   "content_security_policy": "script-src 'self' https://apis.google.com/_/scs/apps-static/_/js/k=oz.gapi.pt_BR.eQ8vuehrFrk.O/m=auth2/rt=j/sv=1/d=1/ed=1/am=AQ/rs=AGLTcCPglPxd8xx6cK-IDnb4WLe2mYk8jg/cb=gapi.loaded_0 https://apis.google.com/js/platform.js; object-src 'self'",
+  "content_security_policy": "script-src 'self' https://apis.google.com/_/scs/apps-static/_/js/k=oz.gapi.pt_BR.eQ8vuehrFrk.O/m=auth2/rt=j/sv=1/d=1/ed=1/am=AQ/rs=AGLTcCPglPxd8xx6cK-IDnb4WLe2mYk8jg/cb=gapi.loaded_0 https://apis.google.com/_/scs/apps-static/_/js/k=oz.gapi.pt_BR.eQ8vuehrFrk.O/m=george/exm=auth2/rt=j/sv=1/d=1/ed=1/am=AQ/rs=AGLTcCPglPxd8xx6cK-IDnb4WLe2mYk8jg/cb=gapi.loaded_1 'sha256-hovOpcZkWK4TnFQab53Qn1y/6enYL+sai5A0zmq5pJ0=' ",
    "content_scripts":[
       {
          "run_at":"document_end",

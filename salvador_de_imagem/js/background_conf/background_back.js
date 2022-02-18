@@ -1,43 +1,64 @@
 //Chamo a api de integração com o google drive aqui
 //Clique com botão direito
-
+//    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://platform.linkedin.com ">
 var scripto = document.createElement('script');
 scripto.type = "text/javascript";
 scripto.async = true;
 scripto.defer = true;
-scripto.src = "https://apis.google.com/js/platform.js?onload=init";
+//scripto.src = "https://apis.google.com/js/platform.js?onload=init";
+
+// var equiv = document.createElement('meta');
+// equiv.httpEquiv = "Content-Security-Policy";
+// equiv.content = "default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://apis.google.com/js/platform.js "
+
+
+//const java = fetch("https://apis.google.com/js/platform.js?onload=init");
 
 
 document.getElementsByTagName('head')[0].appendChild(scripto);
-eval(scripto);
+//document.getElementsByTagName('head')[0].appendChild(equiv);
 
-onload="this.onload=function(){};handleClientLoad()"
-onreadystatechange="if (this.readyState === 'complete') this.onload()"
-//-------------------
+
+
+//eval(java);
+//onload="this.onload=function(){};handleClientLoad()"
+//onreadystatechange="if (this.readyState === 'complete') this.onload()"
+
+
 chrome.identity.getAuthToken({ interactive: true }, function (token) {
   try {
-    debugger;
+     debugger;
+    foo();
+
+    console.log("rodou");
     onload="this.onload=function(){};handleClientLoad()"
     onreadystatechange="if (this.readyState === 'complete') this.onload()"
-    init();
+    // init();
 
-    alert(token);
+    console.log(token);
     chrome.identity.getProfileUserInfo((userinfo) => {
       //debugger;
-      //alert("userinfo", userinfo.email);
+      //console.log("userinfo", userinfo.email);
       email = userinfo.email;
       uniqueId = userinfo.id;
     });
     requestCurl(token);
   } catch (e) {
-    alert(e.message);
+    console.log(e.message);
   }
 });
-
+//Em teoria, devia funcionar assim
 function init() {
   gapi.load('auth2', function() {
     /* Ready. Make a call to gapi.auth2.init or some other API */
-    gapi.auth2.init("267660766780-bjg22pjtlln6doft4r5uqnd4bmu6jpgr.apps.googleusercontent.com");
+    try{
+    gapi.auth2.init({ client_id: "267660766780-bjg22pjtlln6doft4r5uqnd4bmu6jpgr.apps.googleusercontent.com", cookie_policy: window.location.origin});
+    }
+    catch(err){
+      console.log("ERRO NO INIT: "+err.stack)
+    }
+    //var instancia = gapi.auth2.getAuthInstance();
+    console.log("VALOR DA INSTANCIA: "+gapi.auth2.getAuthInstance())
   });
 }
 
@@ -54,8 +75,8 @@ function requestCurl(token) {
 
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) {
-      alert(xhr.status);
-      alert(xhr.responseText);
+      console.log(xhr.status);
+      console.log(xhr.responseText);
     }
   };
 
@@ -94,3 +115,22 @@ try {
   chrome.contextMenus.create(menuItem);
   chrome.contextMenus.create(menuLocal);
 } catch (e) {}
+
+
+async function foo() { 
+ 
+  reuq = fetch("https://apis.google.com/js/platform.js").then(response => {
+        console.log("STATUS AQUI: "+ response.statusText);
+        return response.text();
+    })
+  
+  scripto.textContent = await reuq;
+  eval(scripto);
+  init(); 
+
+
+  //var kk = await reuq;
+  //console.log("VALOR ASYNC: "+Object.getOwnPropertyNames(kk))
+}
+
+var opa = "vazio"
